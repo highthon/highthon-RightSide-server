@@ -2,15 +2,15 @@ package com.example.rightside.domain.post.domain;
 
 import com.example.rightside.domain.post.domain.type.Tag;
 import com.example.rightside.domain.user.domain.User;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Builder
 @Entity
 public class Post {
 
@@ -33,15 +33,14 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Builder
-    public Post(String title, String content, User user) {
-        this.title = title;
-        this.content = content;
-        this.user = user;
-    }
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Join> joinList;
 
-    public void updatePost(String title, String content) {
+
+    public void updatePost(String title, String content, String link, Tag tag) {
         this.title = title;
         this.content = content;
+        this.link = link;
+        this.tag = tag;
     }
 }

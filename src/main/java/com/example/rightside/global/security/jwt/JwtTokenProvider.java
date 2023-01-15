@@ -40,7 +40,7 @@ public class JwtTokenProvider {
 
     private String generateToken(String accountId, Long exp) {
         return Jwts.builder()
-                .signWith(SignatureAlgorithm.ES256, jwtProperties.getSecret())
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecret())
                 .setSubject(accountId)
                 .setHeaderParam("typ", ACCESS_KEY)
                 .setIssuedAt(new Date())

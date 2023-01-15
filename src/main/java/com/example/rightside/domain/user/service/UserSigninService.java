@@ -29,10 +29,10 @@ public class UserSigninService {
         if(!passwordEncoder.matches(password, user.getPassword()))
             throw PasswordMismatchException.EXCEPTION;
 
-        String accessToken = String.valueOf(jwtTokenProvider.generateTokens(accountId));
+        TokenResponse tokenResponse = jwtTokenProvider.generateTokens(accountId);
 
         return TokenResponse.builder()
-                .accessToken(accessToken)
+                .accessToken(tokenResponse.getAccessToken())
                 .build();
     }
 }

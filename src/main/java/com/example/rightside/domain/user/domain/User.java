@@ -1,5 +1,6 @@
 package com.example.rightside.domain.user.domain;
 
+import com.example.rightside.domain.post.domain.Join;
 import com.example.rightside.domain.post.domain.Post;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
@@ -26,6 +27,9 @@ public class User {
     @Column(length = 20, nullable = false)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> postList;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Join> joinList;
 }

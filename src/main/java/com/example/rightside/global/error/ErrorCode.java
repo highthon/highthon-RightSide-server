@@ -12,11 +12,16 @@ public enum ErrorCode {
     SIGNATURE_JWT(401, "Signature Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
 
+    INVALID_USER(401, "Invalid User"),
+
     FORBIDDEN(403, "Forbidden"),
 
-    USER_NOT_FOUND(404-1, "User Not Found"),
+    USER_NOT_FOUND(404, "User Not Found"),
 
-    POST_NOT_FOUND(404-2, "Post Not Found"),
+    POST_NOT_FOUND(404, "Post Not Found"),
+
+    COMMENT_NOT_FOUND(404, "Comment Not Found"),
+
 
     USER_ALREADY_EXIST(409, "User Already Exist"),
 
